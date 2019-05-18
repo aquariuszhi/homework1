@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UFT-8" />
+		<meta name = "viewport" content = "width = device - width, initial-scale = 1">
+		<meta name = "og:title" content = "Navbar">
+		<meta name = "og:discription" content = "week2Homework1">
+		<title>Navbar</title>
+		<style>
+			body{
+				margin: 0px;
+			}
+			.topDiv{
+				height: 34px;
+				background: #514a4a;
+			}
+			#Navbar{
+				display: inline;
+				position: relative;
+				padding: 0px 10px;
+				top: 5px;
+				font-size: 20px;
+				color: white;
+			}
+			#Home{
+				display: inline;
+				position: relative;
+				top: 5px;
+				left: 20px;
+				color: grey;
+				font-size: 12px;
+				}
+			#Link{
+				display: inline;
+				position: relative;
+				top: 5px;
+				left: 40px;
+				color: grey;
+				font-size: 12px;
+			}
+			#blue{
+				position: relative;
+				margin: 0px;
+				height: 260px;
+				background: #dce1fe;
+			}
+			#topContent{
+				display: flex;
+				flex-direction: column;
+				margin: 0 auto;
+				width: 900px;
+			}
+			#title{
+				display: inline-block;
+				margin: 0px;
+				font-size: 60px;
+				text-align: left;
+				color: black;
+			}
+			#introduce{
+				display: inline-block;
+				margin: 0px;
+				font-size: 16px;
+				text-align: left;
+				color: black;
+			}
+			#LearMore{
+				display: inline-block;
+				margin-top: 5px;
+				padding: 5px;
+				background: #0078e7;
+				height: 25px;
+				width: 130px;
+				border-radius: 5px;
+			}
+			#LearMore p{
+				display: inline;
+				margin: 0px 10px;
+				color: white;
+				font-size: 18px;
+				text-align: center;
+			}
+			#under{
+				background: white;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			.all{
+				display: inline-block;
+				position: relative;
+				margin: 5px 10px;
+				background: white;
+				box-sizing: border-box;
+				height: 200px;
+				width: 300px;
+			}
+			.Heading{
+				display: block;
+				position: relative;
+				margin: 10px 0px;
+				font-size: 30px;
+				text-align: left;
+				color: black;
+			}
+			.content{
+				display: block;
+				position: relative;
+				margin: 0px 0px;
+				text-align: left;
+				font-size: 16px;
+				color: black;
+			}
+			.botton{
+				display: block;
+				position: relative;
+				margin: 5px 0px;
+				background: grey;
+				height: 28px;
+				width: 125px;
+				border-radius: 5px;
+			}
+			.View{
+				display: inline-block;
+				position: relative;
+				margin: 3px 3px;
+				padding: 1px 0px;
+				color: white;
+				font-size: 18px;
+				text-align: center;
+			}
+			@media screen and (max-width: 900px){
+				#topContent{
+					display: inline;
+				}
+			}
+			@media screen and (max-width: 600px){
+				#under{
+					flex-direction: column;
+					align-items: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class = 'topDiv'>
+			<p id = 'Navbar'>Navbar</p>
+			<p id = 'Home'>Home</p>
+			<p id = 'Link'>Link</p>
+		</div>
+		<div id = 'blue'>
+			<div id = 'topContent'>
+				<p id = 'title'>Hello,World!</p>
+				<p id = 'introduce'>This is a template for a simple marketing or informational website.It includes a large callout called a jumbotron and three supporting piece of content.Use it as a starting point to create something more unique.</p>
+				<div id = 'LearMore'>
+					<p>Learn more >></p>
+				</div>
+			</div>
+		</div>
+		<div id = 'under'>
+			<div class = 'all'>
+				<p class = 'Heading'>Heading</p>
+				<p class = 'content'>Donec id elit non mi porta gravida at eget metus.Fusce dapibus,telius ac cursus commodo,torfor mauris condimentum nibh,ut fermentum massa iusto sit amet risus.Etlam porta sem malesuada magna mollis euismo.Donec sed odio dui.</p>
+				<div class = 'botton'>
+					<span class = 'View'>View details >></span>
+				</div>
+			</div >
+			<div class = 'all'>
+				<p class = 'Heading'>Heading</p>
+				<p class = 'content'>Donec id elit non mi porta gravida at eget metus.Fusce dapibus,telius ac cursus commodo,torfor mauris condimentum nibh,ut fermentum massa iusto sit amet risus.Etlam porta sem malesuada magna mollis euismo.Donec sed odio dui.</p>
+				<div class = 'botton'>
+					<span class = 'View'>View details >></span>
+				</div>
+			</div>
+			<div class = 'all'>
+				<p class = 'Heading'>Heading</p>
+				<p class = 'content'>Donec id elit non mi porta gravida at eget metus.Fusce dapibus,telius ac cursus commodo,torfor mauris condimentum nibh,ut fermentum massa iusto sit amet risus.Etlam porta sem malesuada magna mollis euismo.Donec sed odio dui.</p>
+				<div class = 'botton'>
+					<span class = 'View'>View details >></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
