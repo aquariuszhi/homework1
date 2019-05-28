@@ -1,0 +1,8 @@
+function q(selector){
+	var target = document.querySelector(selector)
+	return {
+		hide: () => target.style.display = 'none',
+		show: () => target.style.display = ''
+}
+
+q.hide('title')

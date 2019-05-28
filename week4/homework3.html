@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UTF-8'/>
+		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1'>
+		<meta name = 'og:title' content = 'twitch'>
+		<meta name = 'og:discription' content = 'week4homework3'>
+		<title>twitch</title>
+		<style>
+			body{
+				background-image: url('https://lh3.googleusercontent.com/Pahl9o_FSzS0N2eaTwiNQHPkwx79HksraABrcQm7zyP-olS16vTXFR65Oq0HfxroC8QO0PR_kO8p6NHKV-Y-IbS0k7VbJis-o6TpIC_n2nS94yLDOFZ9UQdORHFVSt6p5LBLEkI4Tg=w2400');
+				background-repeat: no-repeat;
+				background-color: gray;
+				background-size: cover;
+			}
+			.twitchDiv{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-around;
+				margin: 0 auto;
+			}
+			.twitchDivDiv{
+				margin: 10px;
+				width: 320px;
+				height: 260px;
+			}
+			.playerspan{
+				display: flex;
+				width: 320px;
+				height: 80px;
+				margin: 0px;
+				background: black;
+				background: rgba(0, 0, 0, 0.4);
+			}
+			img{
+				vertical-align: bottom;
+			}
+			.imgLogo{
+				margin: 5px;
+				width: auto;
+				height: auto;
+				max-height: 90%;
+				max-width: 90%;
+				-webkit-clip-path: circle(50% at 50% 50%);
+			}
+			p{
+				margin: 2px;
+				color: white;
+				font-size: 12px;
+			}
+			.playerspan span{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				margin: 0px;
+				padding: 0px;
+			}
+		</style>
+		<script type = 'text/javascript'>
+			document.addEventListener('DOMContentLoaded', function (){
+				var request = new XMLHttpRequest();
+				var client_Id = 'k61zhrekhvoqwz4o8cfc8sp7hbwb9v';
+				var game = 'League%20of%20Legends';
+				var limit = 20;
+				request.open('GET', 'https://api.twitch.tv/kraken/streams/?client_id=' + client_Id + '&amp;game' + game + '&amp;limit=' + limit, true);
+				request.onload = function(){
+					if (request.status >= 200 && request.status < 400){
+						var resp = request.responseText;
+						console.log(JSON.parse(resp))
+					}
+					for (i = 0; i < 20; i++){
+						var liveObj = JSON.parse(resp)
+						var liveLink = liveObj.streams[i].channel.url
+						var liveImgLink = liveObj.streams[i].preview.medium
+						var logoLink = liveObj.streams[i].channel.logo
+						var liveNameText = liveObj.streams[i].channel.status
+						var playerText = liveObj.streams[i].channel.name
+						var a = document.querySelectorAll('.link')
+						a[i].href = liveLink
+						var img = document.querySelectorAll('.img')
+						img[i].src = liveImgLink
+						var imgLogo = document.querySelectorAll('.imgLogo')
+						imgLogo[i].src = logoLink
+						var liveName = document.querySelectorAll('.liveName')
+						liveName[i].innerText = liveNameText
+						var player = document.querySelectorAll('.player')
+						player[i].innerText = playerText
+					}
+				}
+				request.send();
+			})
+		</script>
+	</head>
+	<body>
+		<div class = 'twitchDiv'>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class = 'twitchDivDiv'>
+				<a class = 'link'>
+					<span>
+						<img class = 'img'></img>
+					</span>
+					<span class = 'playerspan'>
+						<img class = 'imgLogo'></img>
+						<span>
+							<p class = 'liveName'></p>
+							<p class = 'player'></p>
+						</span>
+					</span>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

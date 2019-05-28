@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UFT-8'/>
+		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1'> 
+		<meta name = 'og:title' content = 'computer'>
+		<meta name = 'og:discription' content = 'week4homework1'>
+		<title>Computer</title>
+		<style>
+			div{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 900px;
+			}
+			div span{
+				padding: 5px;
+				width: 300px;
+				display: flex;
+				justify-content: space-between;
+				}
+			#countSpan{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0px;
+				box-sizing: border-box;
+				border-style: solid;
+				border-width: 1px;
+				border-color: gray;
+				height: 50px;
+			}
+			#count{
+				display: block;
+				margin: 0px;
+				padding: 0px;
+				width: 290px;
+				text-align: right;
+				font-size: 34px;
+			}
+			input{
+				width: 70px;
+				height: 30px;
+			}
+		</style>
+		<script type = 'text/javascript'>
+			document.addEventListener('DOMContentLoaded',function(){
+				var result = 0;
+				var text = '';
+				document.querySelector('#upBracket').addEventListener('click', () => {
+					text += '(';
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#hingeBracket').addEventListener('click', () => {
+					text += ')';
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#percent').addEventListener('click', () => {
+					text += '%';
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#allClear').addEventListener('click', () => {
+					text = '';
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#seven').addEventListener('click', () => {
+					text += '7'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#eight').addEventListener('click', () => {
+					text += '8'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#nine').addEventListener('click', () => {
+					text += '9'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#division').addEventListener('click', () => {
+					text += '÷'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#four').addEventListener('click', () => {
+					text += '4'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#five').addEventListener('click', () => {
+					text += '5'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#six').addEventListener('click', () => {
+					text += '6'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#multiple').addEventListener('click', () => {
+					text += 'x'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#one').addEventListener('click', () => {
+					text += '1'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#two').addEventListener('click', () => {
+					text += '2'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#three').addEventListener('click', () => {
+					text += '3'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#minus').addEventListener('click', () => {
+					text += '-'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#zero').addEventListener('click', () => {
+					text += '0'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#pot').addEventListener('click', () => {
+					text += '.'
+					document.querySelector('#count').innerText = text;
+				})
+				document.querySelector('#equal').addEventListener('click', () => {
+					var numberA = 0;
+					var numberB = 0;
+					for ( i=0 ; i<text.length ; i++){
+						if ( text[i] === 'x'){
+							for ( j=0 ; j<i ; j++){
+								numberA += text[j]
+							}
+							for ( k=i+1  ; k<text.length ; k++){
+								numberB += text[k]
+							}
+							result = Number(numberA)*Number(numberB)
+						}else if ( text[i] === '÷'){
+							for ( j=0 ; j<i ; j++){
+								numberA += text[j]
+							}
+							for ( k=i+1  ; k<text.length ; k++){
+								numberB += text[k]
+							}
+							result = Number(numberA)/Number(numberB)
+						}else if ( text[i] === '+'){
+							for ( j=0 ; j<i ; j++){
+								numberA += text[j]
+							}
+							for ( k=i+1  ; k<text.length ; k++){
+								numberB += text[k]
+							}
+							result = Number(numberA)+Number(numberB)
+						}else if ( text[i] === '-'){
+							for ( j=0 ; j<i ; j++){
+								numberA += text[j]
+							}
+							for ( k=i+1  ; k<text.length ; k++){
+								numberB += text[k]
+							}
+							result = Number(numberA)-Number(numberB)
+						}
+					}
+					document.querySelector('#count').innerText = result;
+				})
+				document.querySelector('#plus').addEventListener('click', () => {
+					text += '+'
+					document.querySelector('#count').innerText = text;
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id = 'countSpan'>
+				<p id = 'count'></p>
+			</span>
+			<span>
+				<input type = 'button' id = 'upBracket' value = '('/>
+				<input type = 'button' id = 'hingeBracket' value = ')'/>
+				<input type = 'button' id = 'percent' value = '%'/>
+				<input type = 'button' id = 'allClear' value = 'AC'/>
+			</span>
+			<span>
+				<input type = 'button' id = 'seven' value = '7'/>
+				<input type = 'button' id = 'eight' value = '8'/>
+				<input type = 'button' id = 'nine' value = '9'/>
+				<input type = 'button' id = 'division' value = "&divide"/>
+			</span>
+			<span>
+				<input type = 'button' id = 'four' value = '4'/>
+				<input type = 'button' id = 'five' value = '5'/>
+				<input type = 'button' id = 'six' value = '6'/>
+				<input type = 'button' id = 'multiple' value = 'x'/>
+			</span>
+			<span>
+				<input type = 'button' id = 'one' value = '1'/>
+				<input type = 'button' id = 'two' value = '2'/>
+				<input type = 'button' id = 'three' value = '3'/>
+				<input type = 'button' id = 'minus' value = '-'/>
+			</span>
+			<span>
+				<input type = 'button' id = 'zero' value = '0'/>
+				<input type = 'button' id = 'pot' value = '.'/>
+				<input type = 'button' id = 'equal' value = '='/>
+				<input type = 'button' id = 'plus' value = '+'/>
+			</span>
+		</div>
+	</body>
+</html>
+
+// 可用eval（但有安全性風險）

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UTF-8'/>
+		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1'>
+		<meta name = 'og:title' content	= 'form'>
+		<meta name = 'og:discription' content = 'week4homework2'>
+		<title>Form</title>
+		<style>
+			div{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#title{
+				font-size: 60px;
+			}
+			#essential{
+				display: flex;
+				width: 500px;
+				align-items: flex-start;
+				margin: 10px;
+				color: red;
+				font-size: 20px;
+			}
+			div div{
+				margin = 0px;
+				padding = 0px;
+				width: 500px;
+				display: flex;
+				align-items: flex-start;
+			}
+			div div p{
+				display: inline-block;
+				margin: 0px;
+				font-size: 12px;
+				text-align: left;
+			}
+			.itemDiv{
+				padding: 20px 0px;
+				margin: 2px 0px;
+				height: 80px;
+			}
+			.itemDiv span{
+				display: flex;
+				flex-direction: row;
+				margin: 0px;
+				padding: 0px;
+			}
+			.itemP{
+				font-size: 24px;
+				display: inline-block;
+				margin: 0px;
+				padding: 0px;
+			}
+			.essential{
+				font-size: 20px;
+				display: inline-block;
+				margin: 0px 7px;
+				padding: 0px;
+				color: red;
+			}
+			input[type = text]{
+				border: 0px;
+				border-bottom: 1px solid red;
+				width: 500px;
+				height: 20px;
+				margin: 10px 0px 0px 0px;
+			}
+			input[type = radio]{
+				margin: 10px 0px;
+			}
+			input[type = submit]{
+				width: 80px;
+				height: 40px;
+				font-size: 24px;
+				background: #0041d4c4;
+				border-radius: 5px;
+				color: white;
+			}
+			.choiceDiv{
+				height: 120px;
+			}
+			.submitDiv{
+				margin: 10px;
+			}
+		</style>
+		<script type = 'text/javascript'>
+			document.addEventListener('DOMContentLoaded', function(){
+				document.getElementById('Submit').addEventListener('submit', e =>{
+					var email = document.getElementById('emailAddress').value
+					var emailbg = document.getElementsByClassName('itemDiv')[0]
+					var emailipbg = document.querySelector('form')[0]
+					var nickName = document.getElementById('nickName').value
+					var nickNamebg = document.getElementsByClassName('itemDiv')[1]
+					var nickNameipbg = document.getElementById('nickname')[0]
+					var choiceA = document.getElementById('choiceA').checked
+					var choiceB = document.getElementById('choiceB').checked
+					var choicebg = document.getElementsByClassName('itemDiv')[2]
+					var choiceipbg = document.getElementById('choiceBg')
+					var alertP = document.createElement('p')
+					alertP.innerText = '必填'
+					alertP.style.color = 'red'
+					if (email === ''){
+						document.querySelector('.emailDiv').appendChild(alertP)
+						emailbg.style.background = '#fedada'
+						emailipbg.style.background = '#fedada'
+						e.preventDefault()
+					}
+					if (nickName === ''){
+						document.querySelector('.nickNameDiv').appendChild(alertP)
+						nickNamebg.style.background = '#fedada'
+						nickNameipbg.style.background = '#fedada'
+						e.preventDefault()
+					}
+					if (choiceA === false && choiceB === false){
+						document.querySelector('.choiceDiv').appendChild(alertP)
+						choicebg.style.background = '#fedada'
+						choiceipbg.style.background = '#fedada'
+						e.preventDefault()
+					}else{
+						console.log(email, nickName, choiceA, choiceB)
+						alert('sucess')
+						return true
+					}
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			<p id = 'title'>從零到一：程式導師實驗計畫報名表單</p>
+			<div>
+				<p>詳情請參考：<a href = 'http://medium.com/@hulitw/mentor-program-b5f96ae1eed1'>http://medium.com/@hulitw/mentor-program-b5f96ae1eed1</a></p>
+				<p>記得填完表單之後還要寫信報名才算成功，兩者缺一不可！
+			</div>
+			<p id = 'essential'>*必填</p>
+			<div class = 'emailDiv itemDiv'>
+				<span>
+					<p class = 'itemP'>電子郵件地址</p><p class = 'essential'>*</p>
+				</span>
+				<form>
+					<input type = 'text' id = 'emailAddress' placeholder = '您的電子郵件'/>
+				</form>
+			</div>
+			<div class = 'nickNameDiv itemDiv'>
+				<span>
+					<p class = 'itemP'>暱稱</p><p class = 'essential'>*</p>
+				</span>
+				<p>該怎麼稱呼您</p>
+				<form id = 'nickname'>
+					<input type = 'text' id = 'nickName' placeholder = '您的暱稱'/>
+				</form>
+			</div>
+			<div class = 'choiceDiv itemDiv'>
+				<span>
+					<p class = 'itemP'>報名類型</p><p class = 'essential'>*</p>
+				</span>
+				<form id = 'choiceBg'>
+					<input type = 'radio' id = 'choiceA' name = 'choice' value = 'engineer'>工程師培養班（每週付出四十小時，從零培養到工程師，學費是一個月薪水）<br>
+					<input type = 'radio' id = 'choiceB' name = 'choice' value = 'amateur'>業餘班（依照個人目標訂立學習計劃，學費一萬五千元）<br>
+				</form>
+			</div>
+			<div class = 'submitDiv itemDiv'>
+				<form id = 'Submit'>
+					<input type = 'submit' id = 'submit'/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
