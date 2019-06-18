@@ -70,7 +70,7 @@
 						var resp = request.responseText;
 						console.log(JSON.parse(resp))
 					}
-					for (i = 0; i < 20; i++){
+					for (let i = 0; i < 20; i++){
 						var liveObj = JSON.parse(resp)
 						var liveLink = liveObj.streams[i].channel.url
 						var liveImgLink = liveObj.streams[i].preview.medium
