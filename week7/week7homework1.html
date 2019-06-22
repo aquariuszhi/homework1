@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UTF-8' />
+		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1' />
+		<meta name = 'og:title' content = '網格' />
+		<meta name = 'og:discription' content = '實作網格' />
+		<style>
+			div{
+				display: flex;
+				flex-direction: row;
+			}
+			span{
+				display: inline-block;
+			}
+			.red{
+				background: red;
+			}
+			.blue{
+				background: blue;
+			}
+			.green{
+				background: green;
+			}
+			.gray{
+				background: gray;
+			}
+			.container{
+				text-align: center;
+				width: 960px;
+			}
+			@media screen and (max-width: 720px){
+				div{
+					flex-direction: column;
+				}
+				.col-1{
+					width: 100%;
+				}
+			}
+			@media screen and (max-width: 800px) and (min-width: 721px){
+				.col-2{
+					width: calc((100%/12)*11);
+				}
+			}
+			@media screen and (max-width: 880px) and (min-width: 721px){
+				.col-3{
+					width: calc((100%/12)*10);
+				}
+			}
+			@media screen and (max-width: 960px){
+				.col-4{
+					width: calc((100%/12)*9);
+				}
+			}
+			@media screen and (max-width: 1040px){
+				.col-5{
+					width: calc((100%/12)*8);
+				}
+			}
+			@media screen and (max-width: 1120px){
+				.col-6{
+					width: calc((100%/12)*7);
+				}
+			}
+			@media screen and (max-width: 1200px){
+				.col-7{
+					width: calc((100%/12)*6);
+				}
+			}
+			@media screen and (max-width: 1280px){
+				.col-8{
+					width: calc((100%/12)*5);
+				}
+			}
+			@media screen and (max-width: 1360px){
+				.col-9{
+					width: calc((100%/12)*4);
+				}
+			}
+			@media screen and (max-width: 1440px){
+				.col-10{
+					width: calc((100%/12)*3);
+				}
+			}
+			@media screen and (max-width: 1520px){
+				.col-11{
+					width: calc((100%/12)*2);
+				}
+			}
+			@media screen and (max-width: 1600px){
+				.col-12{
+					width: calc(100%/12);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<span class = 'red col-1 col-2'>123</span>
+			<span class = 'blue col-1 col-2'>456</span>
+			<span class = 'green col-1 col-3'>789</span>
+			<span class = 'gray col-1 container'>abc</span>
+		</div>
+	</body>
+</html>
