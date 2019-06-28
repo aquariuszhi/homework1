@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UTF-8' />
+		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1' />
+		<meta name = 'og:title' content = 'Todolist' />
+		<meta name = 'og:discription' content = 'Todolist' />
+		<style>
+			.all{
+				display: flex;
+				flex-direction: column;
+				margin: 60px 60px 0px 60px;
+			}
+			.todo__list{
+				margin-top: 20px;
+			}
+			.btn{
+				transform: scale(0.7);
+			}
+
+		</style>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>		
+		<script>
+			$(document).ready(function(){
+				$('.todoList').keydown(function(e){
+					if(e.key === 'Enter'){
+						addToDo(e.target.value)
+						e.target.value = ''
+					}
+				})
+				
+				$('.ul_fn').click(function(e){
+					const element = $(e.target)
+					if(e.target.innerText === '刪除'){
+						remove(element)
+					} else if(element.hasClass('btn-finished')){
+						if(element.hasClass('btn-unfinish')){
+							element.removeClass('btn-unfinish btn-primary')
+							element.addClass('btn-success')
+							element.parent().parent().removeClass('list-group-item-success')
+							element.text('完成')
+						} else {
+							element.parent().parent().addClass('list-group-item-success')
+							element.removeClass('btn-success')
+							element.addClass('btn-unfinish btn-primary')
+							element.text('未完成')
+						}
+					}
+				})
+			})
+			
+			var arrList = []
+			function addToDo(n){
+				arrList.push(n)
+				render()
+			}
+			
+			function remove(del){
+				var delHtml = del.parent().parent()
+				var delItem = delHtml[0]
+				arrList.splice(delItem.id, 1)
+				render()
+				
+			}
+			
+			function render(){
+				$('.ul_fn').empty()
+				for(let i = 0 ; i < arrList.length ; i++){
+					let listHtml = `
+								<li class="list-group-item d-flex justify-content-between align-items-center list_fn" id = "`+i+`">`+arrList[i]+
+									`<div class = 'btn_group'>
+										<button type="button" class="btn btn-success btn-finished">完成</button>
+										<button type="button" class="btn btn-danger btn-delete">刪除</button>
+									</div>
+								</li>`
+					
+					$('.ul_fn').append(listHtml)
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class = 'all'>
+			<div class="input-group flex-nowrap input__list">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="addon-wrapping">Enter</span>
+			  </div>
+			  <input type="text" class="form-control todoList" placeholder="請輸入待辦事項" aria-label="Username" aria-describedby="addon-wrapping">
+			</div>
+			<div class = 'todo__list'>
+				<ul class="list-group ul_fn">
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
