@@ -3,8 +3,8 @@
 	<head>
 		<meta charset = 'UTF-8' />
 		<meta name = 'viewport' content = 'width = device-width, initial-scale = 1' />
-		<meta name = 'og:title' content = '網格' />
-		<meta name = 'og:discription' content = '實作網格' />
+		<meta name = 'og:title' content = 'Todolist' />
+		<meta name = 'og:discription' content = 'Todolist' />
 		<style>
 			.all{
 				display: flex;
@@ -31,7 +31,7 @@
 					}
 				})
 				
-				$('.list_fn').click(function(e){
+				$('.ul_fn').click(function(e){
 					const element = $(e.target)
 					if(element.hasClass('btn-delete')){
 						element.parent().parent().remove()
@@ -59,7 +59,7 @@
 			
 			function getList(value){
 				return`
-					<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">${value}
+					<li class="list-group-item d-flex justify-content-between align-items-center list_fn">${value}
 						<div class = "btn_group">
 							<button type="button" class="btn btn-success btn-finished">完成</button>
 							<button type="button" class="btn btn-danger btn-delete">刪除</button>
