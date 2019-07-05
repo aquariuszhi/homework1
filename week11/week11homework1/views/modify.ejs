@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8"/>
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1" />
+		<meta name = "og:title" content = "留言板" />
+		<meta name = "og:description" content = "week6homework" />
+		<meta name = "og:type" content = "website" />
+		<title>留言板</title>
+		<style>
+			body{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			div{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				box-sizing: border-box;
+				width: 700px;
+			}
+			.input_main_comment{
+				box-sizing: border-box;
+				width: 700px;
+				border: 1px solid;
+				border-color: #d5d5f5;
+				padding: 10px;
+				margin-bottom: 10px;
+			}
+			form div{
+				margin: 5px 0px;
+			}
+			.main_coment_done{
+				margin: 0px 10px;
+			}
+			.writecomment{
+				width: 640px;
+				height: 50px;
+				max-width: 640px;
+				max-height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>編輯留言</h1>	
+		</div>
+
+<% if(!sessionNum) { %>
+		<script> alert ('尚未登入'); location.href = '/login'</script>
+<%	} else { %>
+		<div>
+			<form action = "/modify" method = "POST" class = 'input_main_comment'>
+				<div>
+				<%= sessionNum %>
+				</div>
+				<div>
+					<textarea name = "comment" wrap = "physical" placeholder = "在此輸入您的評論" class = "writecomment"><%= Main[0].comment %></textarea>
+					<input type = "hidden" name = "id_main" value = "<%= Main[0].id_main %>" >
+				</div>
+				<input type = "submit" name = "submit" value = "送出" class = "submit">
+			</form>
+		</div>
+<% } %>
+	</body>
+</html>

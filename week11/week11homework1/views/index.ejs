@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('header')%>
+		<%- include('css')%>
+
+		<script type = 'text/javascript'>
+			document.addEventListener('DOMContentLoaded', function(){
+				
+				//子留言區輸入區塊的收合
+				var message_section = document.querySelectorAll('.message_collapse')
+				for (let i = 0 ; i < message_section.length ; i++){
+					message_section[i].addEventListener('click', e =>{
+						var div = message_section[i]
+						var expand = div.classList.toggle('message_expand')
+						var div_show = document.querySelectorAll('.comment_insert_hide')[i]
+						var show = div_show.classList.toggle('comment_insert_show')
+						
+						if(expand && show){
+							e.target.innerText = '回應▼' ;
+						} else {
+							e.target.innerText = '回應▲' ;
+						}
+					})
+				}
+				
+			})
+
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class = 'login'>
+				<%	if(!sessionNum) { %>
+						<a href = '/login'>登入</a>
+				<%	} else { %>
+					<span>使用者：&lt <%= sessionNum %> &gt
+				
+						<a href = '/logout'> 登出</a>
+					</span>
+					<script>
+						function signOut(){
+							document.cookie='account=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+							alert ('登出成功')
+							location.href = '/PHP/week5homework2_login.php'
+						}	
+					</script>
+				<% } %>
+			</div>
+			<div>
+				<h1>留言板</h1>	
+			</div>
+			<div>
+				<form action = "/" method = "POST" class = 'input_main_comment'>
+					<div>
+						<%	if(!sessionNum) { %>
+							<p>暱稱</p>
+						<%	} else { %>
+							<p><%= sessionNum %></p>
+						<% } %>
+					</div>
+					<div>
+						<textarea name = "comment" wrap = "physical" placeholder = "在此輸入您的評論" class = "writecomment"></textarea>
+					</div>
+					<input type = "submit" name = "submit" value = "送出" class = "submit">
+				</form>
+			</div>
+			<% for(var i = 0; i < Main.rows.length; i++){ %>
+			<div class = "main">
+					<div class = 'information name_time main_coment_done modifydiv'>
+						<p><%= Main.rows[i].nickname %></p>
+						<% if(sessionNum && sessionNum === Main.rows[i].nickname) { %>
+								<p><a href = '/modify?id_main=<%= Main.rows[i].id_main %>' class = 'modify'>編輯</a></p>;
+								<p><a href = '/deleted?id_main=<%= Main.rows[i].id_main %>' class = 'delete'>刪除</a></p>;
+						<% } %>
+						<p><%= Main.rows[i].createdAt %></p>
+					</div>
+					<div class = 'information main_coment_done'>
+						<span>
+							<p><%= Main.rows[i].comment %></p>
+						</span>
+					</div>
+					<div class = "child_comment">
+					<% 
+						for(var j = 0; j < Child.length; j++){ 
+							if(Main.rows[i].id_main === Child[j].id_main){
+					%>
+						<div class = 'child_comment_done'>
+							<div class = 'information name_time'>
+								<p><%= Child[j].nickname_child %></p>
+								<p><%= Child[j].createdAt %></p>
+							</div>
+							<div class = 'information'>
+								<span>
+									<p><%= Child[j].comment_child %></p>
+								</span>
+							</div>
+						</div>
+						<% if(sessionNum && sessionNum === Main.rows[i].nickname) { %>	
+							<script type = 'text/javascript'>
+								var show_pink = document.querySelectorAll('.child_comment_done') 
+								for(let i = 0; i < show_pink.length ; i++){
+									show_pink[i].setAttribute('class', 'child_comment_done show_pink')
+								}
+							</script>
+				<% 
+							}
+						} 
+					}
+				%>
+						<form action = "/postChild" method = "POST" class = 'input_child_comment'>
+							<span class = "message_collapse">回應▲</span>
+							<section class = "comment_insert_hide">
+								<div>
+									<%	if(!sessionNum) { %>
+										<p>暱稱</p>
+									<%	} else { %>
+										<p><%= sessionNum %></p>
+									<% } %>
+								</div>
+								<div>
+									<textarea name = "comment_child" wrap = "physical" placeholder = "在此輸入您的評論" class = "writecomment"></textarea>
+									<input type = "hidden" name = "id_main" value = "<%= Main.rows[i].id_main %>">
+								</div>
+								<input type = "submit" name = "submit" value = "送出" class = "submit">
+							</section>
+						</form>
+					</div>
+				</div>
+			<% } %>			
+			<div class = 'pagination'>
+				共 <%= Main.count %>筆留言-在第 <%= page %> 頁-共 <%= pages %> 頁
+				<br /><a href='/?page=1'>首頁</a>
+				第 <% var previewPage = Number(page)-1 %> 
+					<a href ='/?page=<%= previewPage %>' class = 'preview_page'>&lt</a>
+				<% for(let k=1 ; k <= pages ; k++ ) { %>
+						<a href='/?page=<%= k %>' class = 'page'><%= k %></a>
+				<% } %>
+				<% var nextPage = Number(page)+1 %>
+				<a href ='/?page=<%= nextPage %>' value ="<%= page %>" class = 'next_page'>&gt</a>
+				頁 <a href='/?page=<%= pages %>'>末頁</a><br /><br />
+					<script type = 'text/javascript'>;
+						//新增當前頁的class name，使得可以指定當前頁碼變紅色
+						let pageitem = document.querySelectorAll('.page')
+						let page_current = pageitem[<%= previewPage %>]
+						page_current.setAttribute('class', 'page_current')
+						//如果現在在最前頁，則無法點擊上一頁
+						<% if(page == 1){ %>
+							let preview_none = document.querySelector('.preview_page')
+							preview_none.setAttribute('class', 'unclickable')
+						<% } %>
+						//如果現在在最末頁，則無法點擊下一頁
+						<% if(page == pages){ %>
+							let next_none = document.querySelector('.next_page')
+							next_none.setAttribute('class', 'unclickable')
+						<% } %>
+					</script>
+			</div>
+		</div>
+	</body>
+</html>

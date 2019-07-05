@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('css') %>
+		<%- include('script') %>
+		<%- include('header') %>
+		
+		<style>
+			.adjust{
+				margin: 0 auto;
+				margin-top: 300px;
+				max-width: 800px;
+			}
+			.outputUrl{
+				margin-top: 50px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$('.form-control').on('keydown', e => {
+					if(e.key === 'Enter'){
+						$.ajax({
+							type: 'POST',
+							url: '/',
+							data: {
+								shiftUrl: e.target.value
+							},
+							success: function(data){
+								//console.log(data)
+								$('.form-control').val('')
+								$('.shortUrl').text('/sh/'+data.shortUrl)
+							},
+							error: function(error){
+								console.log(error)
+							}
+						})
+					}
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="input-group flex-nowrap  adjust">
+		  <div class="input-group-prepend">
+			<span class="input-group-text" id="addon-wrapping">@</span>
+		  </div>
+		  <input type="text" name = 'shiftUrl' class="form-control" placeholder="Please insert Url" aria-label="Username" aria-describedby="addon-wrapping">
+		</div>
+		<div class="input-group flex-nowrap adjust outputUrl">
+			<p class = 'shortUrl'>outputUrl</p>
+		</div>
+	</body>
+</html>
