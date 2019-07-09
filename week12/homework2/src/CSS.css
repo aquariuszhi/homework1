@@ -1,0 +1,31 @@
+.nav-box{
+	display: flex;
+	width: 100%;
+}
+
+.nav-rightside{
+	margin: 0 auto;
+	margin-right: 50px;
+}
+
+.navbar{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.navbar-nav{
+	flex-direction: row;
+}
+
+.nav-item{
+	margin-right: 20px;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.dropdown-menu{
+	min-width: auto;
+}
