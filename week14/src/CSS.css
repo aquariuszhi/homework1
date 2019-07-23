@@ -1,0 +1,36 @@
+.adjust{
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-right: 20px;
+	width: auto;
+}
+
+.input-group-adjust{
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.ulAdjust{
+	margin-left: 40px;
+}
+
+.liAdjust{
+	display: flex;
+	flex-direction: row;
+}
+
+.btngroupAdjust{
+	margin: 0 auto;
+	margin-right: 10px;
+}
+
+.btnAdust{
+	margin-right: 5px;
+	padding: 0px 5px; 
+	width: 65px;
+}
+
+.finished{
+	background: #d7f5d7;
+}
