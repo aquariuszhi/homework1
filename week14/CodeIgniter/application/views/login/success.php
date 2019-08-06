@@ -1,0 +1,1 @@
+<?php echo ("<script>alert ('登入成功'); location.href = '../comment/comment';</script>"); ?>
