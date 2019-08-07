@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize')
+//連接資料庫
+const Sequelize = require('sequelize')  //引入Sequelize
 
 const sequelize = new Sequelize('commentboard', 'root', 'fish0616', {
 	host: 'localhost',
@@ -6,7 +7,7 @@ const sequelize = new Sequelize('commentboard', 'root', 'fish0616', {
 })
 
 sequelize
-	.authenticate()
+	.authenticate() //認證用函式
 	.then(() => {
 		console.log('Connection has been established successfully.')
 	})

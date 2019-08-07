@@ -1,3 +1,5 @@
+//連接table，若無該table就新建（連接不同table須新建連接table的檔案）
+
 const Sequelize = require('sequelize')
 const conn = require('./conn')
 
@@ -25,6 +27,6 @@ const User = conn.define('user', {
 	tableName: 'registered'
 })
 
-//User.sync() 若沒有該table就新建一個
+User.sync() //若沒有該table就新建一個
 
 module.exports = User

@@ -25,6 +25,7 @@ class App extends React.Component{
 				  <a className="navbar-brand" href="#">Blog</a>
 				  <div className="navbar-collapse" id="navbarNavDropdown">
 					<ul className="navbar-nav nav-box">
+						//設定當前頁tab的效果
 					  <li className={"nav-item" + (this.state.tab === 'home' ? ' active' : '')}>
 						<a className="nav-link" name = 'home' onClick = {this.handleClick} >Home<span className="sr-only">(current)</span></a>
 					  </li>

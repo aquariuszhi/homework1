@@ -1,17 +1,21 @@
-const User = require('../model/user')
-const MainComment = require('../model/post_main')
-const ChildComment = require('../model/post_child')
+//controller為資料庫和渲染之間的溝通橋樑
+
+const User = require('../model/user')  //須引入model
 const bcrypt = require('bcrypt') //加密liberary
 
 module.exports = {
 	index: function(req, res){
 		const sessionNum = req.session.nickname
+		//設定若無頁碼，則頁碼為1
 		if(!req.query.page){
 			var page = 1
 		} else {
 			var page = req.query.page
 		}
 		var start = (page-1)*10
+		
+		//根據頁碼將主留言和子留言資料取出
+		//ORM（Object Relation Mapping）:可直接將Object和DB裡面的資料做對應。
 		MainComment.findAndCountAll({
 			offset: start,
 			limit: 10
@@ -20,6 +24,7 @@ module.exports = {
 			var pages = Math.ceil(Main.count/10)
 			ChildComment.findAll()
 			.then(Child => {
+				//將資料傳給view
 				res.render('index', {
 					Main,
 					Child,
@@ -35,13 +40,13 @@ module.exports = {
 			console.log(err)
 		})
 	},
-	
+	//渲染登入頁面
 	login: (req, res) => {
 		res.render('login', {
 			title: 'Ligin'
 		})
 	},
-	
+	//login驗證
 	loginBackend: (req, res) => {
 		let Password = req.body.password
 		User.findAll({
@@ -49,7 +54,9 @@ module.exports = {
 				account: req.body.account
 			}
 		}).then(data => {
+			//hash密碼的驗證函數
 			if(bcrypt.compareSync(Password,data[0].password)){
+				//設定session並導回首頁
 				req.session.nickname = data[0].nickname
 				res.redirect('/')
 			} else {
@@ -63,12 +70,13 @@ module.exports = {
 			})
 		})
 	},
-	
+	//登出
 	logout: (req, res) => {
+		//銷毀session
 		req.session.destroy();
 		res.redirect('/')
 	},
-	
+	//渲染註冊頁面
 	registered: (req, res) => {
 		res.render('registered',{
 			title: 'Register'

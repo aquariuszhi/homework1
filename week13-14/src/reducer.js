@@ -1,6 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux' //可將reducer合併的middleware
 import { GET, GET_ALL, POST_MAIN, POST_CHILD, LOGIN_CHECK, LOGIN, LOGOUT, REGISTER, REGISTERED, MODIFY, DELETE } from './actionTypes'
 
+//reducer作用為當處理完action時，將返回的資料做處理並改變狀態。
 const initialState = {
 	userData: null,
 	loginData: null,
@@ -18,7 +19,7 @@ const initialState = {
 	pagination: null,
 	currentPage: 1
 }
-
+//根據不同action及返回值改變不同狀態
 function GetReducer(state = initialState, action){
 	switch (action.type){
 		//get all comment
@@ -245,7 +246,7 @@ function ModifyReducer(state = initialState, action){
 			return state
 	}
 }
-
+//將不同reducer合併
 const app = combineReducers({
 	getPost: GetReducer,
 	getOnePost: GetReducer,

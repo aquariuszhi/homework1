@@ -196,7 +196,7 @@
 						//session和資料庫一致則會員狀態列改變，反之出現警告並強制登出
 							if ($row_session == $session){
 								$sql_Nickname = $conn->prepare("SELECT registered.nickname FROM registered JOIN session WHERE id_registered = ?");
-								$sql_Nickname -> bind_param("s", $row_id_reg["user_id"]);
+								$sql_Nickname -> bind_param("s", $row_id_reg["user_id"]);  //防sql inject
 								$sql_Nickname ->execute();
 								$result_Nickname = $sql_Nickname->get_result();
 								$row_Nickname = $result_Nickname->fetch_assoc();
@@ -223,7 +223,7 @@
 						if(!isset($_COOKIE["session"])) {
 						echo "<p>暱稱</p>";
 						} else {
-						echo "<p>".htmlspecialchars($row_Nickname["nickname"], ENT_QUOTES, 'UTF-8')."</p>";
+						echo "<p>".htmlspecialchars($row_Nickname["nickname"], ENT_QUOTES, 'UTF-8')."</p>";  //防XSS
 						}
 					?>
 					</div>
@@ -331,11 +331,12 @@
 							}
 						}
 					?>
-						<form action = "/PHP/week6homework_posts.php" method = "POST" class = 'input_child_comment'>
+					<?php //子留言表格 ?>
+						<form action = "/PHP/week6homework_posts.php" method = "POST" class = 'input_child_comment'> 
 							<span class = "message_collapse">回應▲</span>
 							<section class = "comment_insert_hide">
 								<div>
-								<?php
+								<?php 
 									if(!isset($_COOKIE["session"])) {
 										echo "<p>暱稱</p>";
 									} else {

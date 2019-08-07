@@ -29,13 +29,13 @@
 			$header = $this->input->get_request_header('X-XSRF-TOKEN', TRUE);
 			
 			if($cookie === $header){
-				if(strlen($account) > 10){
+				if(mb_strlen($$account,'utf8') > 10){
 					$arr = array('result' => '帳號過長');	
 					$this->output->set_content_type('application/json')->set_output(json_encode($arr)); //輸出json格式資料
-				} else if(strlen($password) > 10){
+				} else if(mb_strlen($$password,'utf8') > 10){
 					$arr = array('result' => '密碼過長');	
 					$this->output->set_content_type('application/json')->set_output(json_encode($arr));
-				} else if(strlen($nickname) > 10){
+				} else if(mb_strlen($nickname,'utf8') > 10){
 					$arr = array('result' => '暱稱過長');	
 					$this->output->set_content_type('application/json')->set_output(json_encode($arr));
 				} else if($accountCheck === 'repeat'){

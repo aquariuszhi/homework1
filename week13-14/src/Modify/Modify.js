@@ -10,7 +10,7 @@ class Modify extends React.Component{
 			newComment: ''
 		}
 	}
-	
+	//根據該留言id渲染該資料
 	componentDidMount(){
 		const id_main = this.props.match.params.id
 		this.props.getOnePost(id_main)
@@ -19,14 +19,15 @@ class Modify extends React.Component{
 			newComment: onePost.comment
 		})
 	}
-
+	//修改成功即導至該留言頁面
 	componentDidUpdate(preProps){
 		if(!preProps.commentMessage && this.props.commentMessage === 'success'){
 			alert ('修改成功')
-			this.props.history.push('/')
+			const id_main = this.props.match.params.id
+			this.props.history.push('/post/' + id_main)
 		}
 	}
-	
+	//確認欄位有輸入資料後，將新留言傳至資料庫
 	handleComment = (e) => {
 		e.preventDefault();
 		const commentLen = e.target.form[0]

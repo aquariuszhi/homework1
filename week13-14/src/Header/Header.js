@@ -6,7 +6,7 @@ class Header extends React.Component{
 	constructor(props){
 		super(props)
 	}
-	
+	//登出功能
 	handleLogout = (e) => {
 		e.preventDefault();
 		this.props.logout()

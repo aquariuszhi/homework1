@@ -146,7 +146,7 @@
 				for (let i = 0 ; i < message_section.length ; i++){
 					message_section[i].addEventListener('click', e =>{
 						var div = message_section[i]
-						var expand = div.classList.toggle('message_expand')
+						var expand = div.classList.toggle('message_expand')  //非true即false，適用於需要來回切換的場合
 						var div_show = document.querySelectorAll('.comment_insert_hide')[i]
 						var show = div_show.classList.toggle('comment_insert_show')
 						
@@ -180,9 +180,9 @@
 				</form>
 <?php
 	//如果資料庫沒有資料就隱藏，否則依序將主留言顯示出來
-	$sql_main = "SELECT * FROM maincomment ORDER BY id_main DESC";
+	$sql_main = "SELECT * FROM maincomment ORDER BY id_main DESC";  //ORDER BY 將資料排序（DESC降冪/ESC升冪）
 	$result_main = $conn->query($sql_main);
-	$sql_main_num = ($result_main->num_rows);
+	$sql_main_num = ($result_main->num_rows); //取得資料數目
 	$pages = ceil($sql_main_num/10) ;
 	if (!isset($_GET["page"])){ //假如$_GET["page"]未設置
         $page=1; //則在此設定起始頁數
@@ -190,9 +190,10 @@
         $page = intval($_GET["page"]); //確認頁數只能夠是數值資料
     }
 	$start = ($page-1)*10 ;
-	$sql_page = "SELECT * FROM maincomment ORDER BY id_main DESC LIMIT $start, 10";
+	$sql_page = "SELECT * FROM maincomment ORDER BY id_main DESC LIMIT $start, 10";  
 	$result_main_page = $conn->query($sql_page);
 	
+	//如果資料庫沒有資料就隱藏，否則依序將主留言顯示出來
 	if ($result_main_page->num_rows > 0){
 		while($row_main = $result_main_page->fetch_assoc()){
 ?>

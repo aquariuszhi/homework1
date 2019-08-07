@@ -38,7 +38,7 @@
 				signOut();
 				function signOut(){
 							
-					document.cookie='session=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+					document.cookie='session=; expires=Thu, 01 Jan 1970 00:00:00 GMT'  //清除session
 					alert ('登出成功')
 					location.href = '/PHP/week6homework_login.php'
 				}	

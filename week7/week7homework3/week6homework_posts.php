@@ -42,7 +42,7 @@
 					$sql_main_insert = "INSERT INTO maincomment(nickname,comment) VALUES('$nickname','$comment')";
 					if ($conn->query($sql_main_insert)){
 						$arr = array('result' => 'success', 'nickname' => $nickname, 'datetime' => $datetime, 'id_main' => $id_main_ajax );
-						echo json_encode($arr);
+						echo json_encode($arr); //將資料轉為json格式
 						//header('Location: week6homework_main.php');
 					} else {
 						header('Location: week6homework_main.php');

@@ -26,6 +26,7 @@
 		<script>
 			$(document).ready(function(){
 				$('.todoList').keydown(function(e){
+					//若按下enter鍵則新增todo並清空輸入欄位
 					if(e.key === 'Enter'){
 						addToDo(e.target.value)
 						e.target.value = ''
@@ -34,8 +35,10 @@
 				
 				$('.ul_fn').click(function(e){
 					const element = $(e.target)
+					//若點選刪除鈕即啟動刪除功能
 					if(e.target.innerText === '刪除'){
 						remove(element)
+					//標示完成或未完成功能
 					} else if(element.hasClass('btn-finished')){
 						if(element.hasClass('btn-unfinish')){
 							element.removeClass('btn-unfinish btn-primary')
@@ -51,13 +54,13 @@
 					}
 				})
 			})
-			
+			//新增todo並重新渲染
 			var arrList = []
 			function addToDo(n){
 				arrList.push(n)
 				render()
 			}
-			
+			//刪除並重新渲染
 			function remove(del){
 				var delHtml = del.parent().parent()
 				var delItem = delHtml[0]
@@ -65,7 +68,7 @@
 				render()
 				
 			}
-			
+			//渲染頁面
 			function render(){
 				$('.ul_fn').empty()
 				for(let i = 0 ; i < arrList.length ; i++){

@@ -1,0 +1,86 @@
+※請解釋後端與前端的差異。
+
+※假設我今天去 Google 首頁搜尋框打上：javascript 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
+
+※請列舉出 5 個 command line 指令並且說明功用。
+
+※請找出三個課程裡面沒提到的 HTML 標籤並一一說明作用。
+
+※請問什麼是盒模型（box modal）
+
+※請問 display: inline, block 跟 inline-block 的差別是什麼？
+
+※請問 position: static, relative, absolute 跟 fixed 的差別是什麼？
+
+※什麼是 DOM？
+
+※什麼是 Ajax？
+
+※HTTP method 有哪幾個？有什麼不一樣？
+
+※GET 跟 POST 有哪些區別，可以試著舉幾個例子嗎？
+
+※什麼是 RESTful API？
+
+※JSON 是什麼？
+
+※JSONP 是什麼？
+
+※要如何存取跨網域的 API？
+
+※資料庫欄位型態 VARCHAR 跟 TEXT 的差別是什麼
+
+※Cookie 是什麼？在 HTTP 這一層要怎麼設定 Cookie，瀏覽器又會以什麼形式帶去 Server？
+
+※我們本週實作的會員系統，你能夠想到什麼潛在的問題嗎？
+
+※請說明 SQL Injection 的攻擊原理以及防範方法
+
+※請說明 XSS 的攻擊原理以及防範方法
+
+※請說明 CSRF 的攻擊原理以及防範方法
+
+※請舉出三種不同的雜湊函數
+
+※請去查什麼是 Session，以及 Session 跟 Cookie 的差別
+
+※include、require、include_once、require_once 的差別
+
+※Bootstrap 是什麼？
+
+※請簡介網格系統以及與 RWD 的關係
+
+※請找出任何一個與 Bootstrap 類似的 library
+
+※jQuery 是什麼？
+
+※jQuery 與 vanilla JS 的關係是什麼？
+
+※什麼是 DNS？Google 有提供的公開的 DNS，對 Google 的好處以及對一般大眾的好處是什麼？
+
+※什麼是資料庫的 lock？為什麼我們需要 lock？
+
+※NoSQL 跟 SQL 的差別在哪裡？
+
+※資料庫的 ACID 是什麼？
+
+※gulp 跟 webpack 有什麼不一樣？我們可以不用它們嗎？
+
+※把 todo list 改寫有資料更新就重新rander，可能會有什麼問題？
+
+※什麼是 MVC？
+
+※什麼是 ORM？
+
+※為什麼我們需要 React？可以不用嗎？
+
+※state 跟 props 的差別在哪裡？
+
+※請列出 React 的 life cycle 以及其代表的意義（componentWillMount...）
+
+※React Router 背後的原理大概是如何，可以簡單說明一下嗎？
+
+※Redux 是什麼？
+
+※Single Page Application 是什麼？有哪些頁面一定要用這個架構去設計嗎？
+

@@ -1,3 +1,5 @@
+//設定actionTypes
+
 export const GET = 'GET'
 export const GET_ALL = 'GET_ALL'
 export const POST_MAIN = 'POST_MAIN'

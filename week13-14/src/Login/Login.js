@@ -10,7 +10,7 @@ class Login extends React.Component {
 			password: ''
 		}
 	}
-	
+	//登入功能
 	handleLogin = (e) => {
 		e.preventDefault();
 		const {account, password} = this.state
@@ -22,7 +22,7 @@ class Login extends React.Component {
 			[e.target.name]: e.target.value
 		})
 	}
-	
+	//登入成功自動導回首頁
 	componentDidUpdate(preProps){
 		if(!preProps.loginData && this.props.loginData){
 			this.props.history.push('/');

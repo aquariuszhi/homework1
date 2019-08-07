@@ -24,6 +24,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>		
 		<script>
+			//若鍵盤按下enter就新增todo
 			$(document).ready(function(){
 				$('.todoList').keydown(function(e){
 					if(e.key === 'Enter'){
@@ -31,6 +32,7 @@
 					}
 				})
 				
+				//若滑鼠按下delete或完成鈕（或未完成），就刪除或標示完成（或未完成）
 				$('.ul_fn').click(function(e){
 					const element = $(e.target)
 					if(element.hasClass('btn-delete')){
@@ -51,6 +53,7 @@
 				})
 			})
 			
+			//新增todo
 			function addList(value){
 				const getNewList = getList(value)
 				$('.todoList').val('')

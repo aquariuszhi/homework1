@@ -11,13 +11,13 @@ class PostChildComment extends React.Component{
 			collapse: '新增回應▲'
 		}
 	}
-	
+	//抓取該主留言和相關子留言
 	componentDidMount(){
 		this.props.checkLogin()
 		const id_main = this.props.match.params.id
 		this.props.getOnePost(id_main)
 	}
-	
+	//若刪除成功就導回首頁，若成功送出子留言就重新渲染並將收納按鈕初始化
 	componentDidUpdate(prevProps){
 		if (!prevProps.deleteMessage && this.props.deleteMessage === 'success'){
 			this.props.history.push('/')
@@ -31,7 +31,7 @@ class PostChildComment extends React.Component{
 			})
 		}
 	}
-	
+	//將子留言傳至資料庫
 	handleChildComment = (e) => {
 		e.preventDefault();
 		const {comment_child} = this.state
@@ -40,7 +40,7 @@ class PostChildComment extends React.Component{
 		const id_main = onePost.id_main
 		this.props.post_child(id_main, nickname, comment_child)
 	}
-	
+	//收納安鈕
 	handleCollapse = (e) => {
 		e.preventDefault();
 		const {collapse} = this.state
@@ -55,7 +55,7 @@ class PostChildComment extends React.Component{
 		}
 		
 	}
-	
+	//刪除功能
 	handleDelete = (e) => {
 		e.preventDefault();
 		if(confirm('確認是否刪除此留言')){

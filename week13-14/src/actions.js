@@ -1,3 +1,5 @@
+//actions負責根據不同的actionTypes對應到不同的Api
+
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 

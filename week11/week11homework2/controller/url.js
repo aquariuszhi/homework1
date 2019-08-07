@@ -7,7 +7,7 @@ module.exports = {
 		})
 		
 	},
-	
+	//將頁面導至短網址在資料庫所對應的網址
 	shift: function(req, res){
 		if(req.params){
 			Url.findAll({
@@ -30,6 +30,7 @@ module.exports = {
 	UrlBackend: (req, res) => {
 		var str = ''
 		var result = ''
+		//取隨機6位英文或數字
 		for(var i = 1 ; i <=100000 ; i++){
 			if(str.length < 6){
 				var ran = Math.ceil(Math.random()*123)

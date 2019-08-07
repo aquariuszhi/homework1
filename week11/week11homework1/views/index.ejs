@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		// 跳脫引入檔案（防XSS）
 		<%- include('header')%>
 		<%- include('css')%>
 
@@ -31,7 +32,10 @@
 	<body>
 		<div>
 			<div class = 'login'>
-				<%	if(!sessionNum) { %>
+				<%	
+					//在html使用javascript需用<% 內容 %>包起，類似PHP語法。
+					if(!sessionNum) { 
+				%>
 						<a href = '/login'>登入</a>
 				<%	} else { %>
 					<span>使用者：&lt <%= sessionNum %> &gt
@@ -53,10 +57,11 @@
 			<div>
 				<form action = "/" method = "POST" class = 'input_main_comment'>
 					<div>
+						//暱稱欄位根據登入有無而變化
 						<%	if(!sessionNum) { %>
 							<p>暱稱</p>
 						<%	} else { %>
-							<p><%= sessionNum %></p>
+							<p><%= sessionNum  /*等號為express跳脫語法（可防XSS）*/ %></p>
 						<% } %>
 					</div>
 					<div>
@@ -65,11 +70,17 @@
 					<input type = "submit" name = "submit" value = "送出" class = "submit">
 				</form>
 			</div>
-			<% for(var i = 0; i < Main.rows.length; i++){ %>
+			<% 
+				//依序顯示主留言
+				for(var i = 0; i < Main.rows.length; i++){ 
+			%>
 			<div class = "main">
 					<div class = 'information name_time main_coment_done modifydiv'>
 						<p><%= Main.rows[i].nickname %></p>
-						<% if(sessionNum && sessionNum === Main.rows[i].nickname) { %>
+						<% 
+							//若使用者和推文暱稱相符，則顯示編輯和刪除連結
+							if(sessionNum && sessionNum === Main.rows[i].nickname) { 
+						%>
 								<p><a href = '/modify?id_main=<%= Main.rows[i].id_main %>' class = 'modify'>編輯</a></p>;
 								<p><a href = '/deleted?id_main=<%= Main.rows[i].id_main %>' class = 'delete'>刪除</a></p>;
 						<% } %>
@@ -82,6 +93,7 @@
 					</div>
 					<div class = "child_comment">
 					<% 
+						//依序顯示該主留言的子留言
 						for(var j = 0; j < Child.length; j++){ 
 							if(Main.rows[i].id_main === Child[j].id_main){
 					%>
@@ -96,7 +108,10 @@
 								</span>
 							</div>
 						</div>
-						<% if(sessionNum && sessionNum === Main.rows[i].nickname) { %>	
+						<% 
+							//若子留言的作者和登入者相同，則將該留言區塊設為粉色
+							if(sessionNum && sessionNum === Main.rows[i].nickname) { 
+						%>	
 							<script type = 'text/javascript'>
 								var show_pink = document.querySelectorAll('.child_comment_done') 
 								for(let i = 0; i < show_pink.length ; i++){

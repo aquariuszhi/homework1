@@ -185,7 +185,7 @@
 							comment: comment,
 						},
 						success: function(resp){
-							var res = JSON.parse(resp)
+							var res = JSON.parse(resp)  //讀取json格式資料
 							if(res.result === 'success'){
 								$('.input_main_comment').after(`
 									<div class = "main">

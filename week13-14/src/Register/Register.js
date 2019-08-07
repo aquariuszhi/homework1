@@ -18,6 +18,7 @@ class Register extends React.Component{
 		const accountLen = e.target.form[0]
 		const passwordLen = e.target.form[1]
 		const nicknameLen = e.target.form[2]
+		//確認欄位是否皆已輸入
 		if(accountLen.value === '' || passwordLen.value === '' || nicknameLen.value === ''){
 			alert ('請輸入帳號/密碼/暱稱')
 		} else {
@@ -25,13 +26,13 @@ class Register extends React.Component{
 			this.props.register(account, nickname, password)
 		}
 	}
-	
+	//讓輸入欄位可以顯示使用者輸入的內容
 	onInputChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
 	}
-	
+	//成功註冊後導向登入頁面
 	componentDidUpdate(preProps){
 		if(!preProps.userData && this.props.userData){
 			alert ('註冊成功')

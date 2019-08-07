@@ -23,7 +23,7 @@
 			$nickname = $data->nickname;
 			$comment = $data->comment;				
 			$result = $this->modify_model->set_modify_comment($id_main, $nickname, $comment);
-			
+			//確認CSRF Token（防止CSRF攻擊）
 			$cookie = get_cookie("XSRF-TOKEN", false);
 			$header = $this->input->get_request_header('X-XSRF-TOKEN', TRUE);
 			

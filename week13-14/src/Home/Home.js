@@ -8,25 +8,27 @@ class Home extends React.Component{
 	constructor(props){
 		super(props)
 	}
-
+	
 	componentDidMount(){
 		const paramObj = this.props.match.params
 		if(Object.getOwnPropertyNames(paramObj).length === 0){
+			//設定預設頁碼為1
 			const page = 1
 			this.props.getPost(page)
 		} else {
+			//根據頁碼渲染資料
 			const page = this.props.match.params.page
 			this.props.getPost(page)
 		}
 	}
-
+	//根據頁碼導致該頁面
 	handleChangePage = (e) => {
 		e.preventDefault();
 		const page = e.target.innerText
 		this.props.history.push('/home/' + page)
 		this.props.getPost(page)
 	}
-	
+	//前一頁功能
 	handlePrevPage = (e) => {
 		e.preventDefault();
 		const {currentPage} = this.props
@@ -34,7 +36,7 @@ class Home extends React.Component{
 		this.props.history.push('/home/' + page)
 		this.props.getPost(page)
 	}
-	
+	//後一頁功能
 	handleNextPage = (e) => {
 		e.preventDefault();
 		const {currentPage} = this.props
@@ -42,14 +44,14 @@ class Home extends React.Component{
 		this.props.history.push('/home/' + page)
 		this.props.getPost(page)
 	}
-	
+	//第一頁功能
 	handleFirstPage = (e) => {
 		e.preventDefault();
 		const page = 1
 		this.props.history.push('/home/' + page)
 		this.props.getPost(page)
 	}
-	
+	//最後一頁功能
 	handleLastPage = (e) => {
 		e.preventDefault();
 		const {pagination} = this.props
@@ -57,7 +59,7 @@ class Home extends React.Component{
 		this.props.history.push('/home/' + page)
 		this.props.getPost(page)
 	}
-	
+	//進入該留言
 	handleEnterComment = (e) => {
 		e.preventDefault();
 		e.persist()
@@ -95,7 +97,7 @@ class Home extends React.Component{
 					<div className = 'pagination' aria-label="...">
 						<Link to='/1' onClick = {this.handleFirstPage} className={"page-link" + (currentPageNum == 1 ? ' unclickable' : '')} page_num = '1'>首頁</Link>
 						<Link to='/pagefront' onClick = {this.handlePrevPage} className={"page-link" + (currentPageNum == 1 ? ' unclickable' : '')}>&lt;</Link>
-						{
+						{ //根據當前頁讓頁碼鈕產生不同表現
 							currentPageNum < 3 ? '' : <Link to='/' onClick = {this.handleChangePage} className="page-link ">{currentPageNum-2}</Link>
 						}
 						{

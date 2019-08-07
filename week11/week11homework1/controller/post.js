@@ -4,6 +4,7 @@ const ChildComment = require('../model/post_child')
 module.exports = {
 	commentBackend: function(req, res){
 		const sessionNum = req.session.nickname
+		//確認有無session和有無輸入留言，若達成條件即新增留言並導回首頁
 		if(sessionNum && req.body.comment !== ''){
 			MainComment.create({
 				nickname: sessionNum,
@@ -24,6 +25,7 @@ module.exports = {
 	
 	childBackend: function(req, res){
 		const sessionNum = req.session.nickname
+		//確認有無session和有無輸入留言，若達成條件即新增留言並導回首頁
 		if(sessionNum && req.body.comment_child !== ''){
 			ChildComment.create({
 				nickname_child: sessionNum,
@@ -42,7 +44,7 @@ module.exports = {
 			res.render('commentPlease')
 		}
 	},
-	
+	//渲染修改主留言頁面
 	modify: (req, res) => {
 		const sessionNum = req.session.nickname
 		MainComment.findAll({
@@ -59,9 +61,10 @@ module.exports = {
 			console.log(err)
 		})
 	},
-	
+	//修改主留言後端
 	modifyBackend: (req, res) => {		
 		const sessionNum = req.session.nickname
+		//確認有無session和有無輸入留言，若達成條件即新增留言並導回首頁
 		if(sessionNum && req.body.comment !== ''){
 			MainComment.update({
 				comment: req.body.comment
@@ -85,6 +88,7 @@ module.exports = {
 	
 	deletedBackend: (req, res) => {
 		const sessionNum = req.session.nickname
+		//若有session即可刪除自己的留言
 		if(sessionNum){
 			MainComment.destroy({
 				where: {

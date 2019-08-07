@@ -3,14 +3,13 @@ import { hot } from 'react-hot-loader/root';
 
 class Todo extends React.Component{
 	constructor(props){
-		super(props)
-		const {todo} = this.props
+		super(props)  
 		this.state = {
 		}
 	}
 	
 	handleFinished = () => {
-		const {status, todo, finishItem} = this.props
+		const {status, todo, finishItem} = this.props //引入其他component的狀態或函式或屬性
 		finishItem(todo)
 	}
 	

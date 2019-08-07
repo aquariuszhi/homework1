@@ -10,11 +10,11 @@ class PostComment extends React.Component{
 			comment: ''
 		}
 	}
-	
+	//確認登入狀態
 	componentDidMount(){
 		this.props.checkLogin()
 	}
-	
+	//留言成功就導回首頁
 	componentDidUpdate(prevProps){
 		if(this.props.loginData == null){
 			alert ('請重新登入')
@@ -24,7 +24,7 @@ class PostComment extends React.Component{
 			this.props.history.push('/home/1')
 		}
 	}
-	
+	//傳送留言至資料庫
 	handleComment = (e) => {
 		e.preventDefault();
 		const {comment} = this.state

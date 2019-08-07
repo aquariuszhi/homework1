@@ -56,14 +56,14 @@
 					$result = $sql->get_result();
 					$row = $result->fetch_assoc();
 					
-					//判斷資料庫是否有該帳號密碼
+					//判斷資料庫是否有該帳號密碼（密碼需用雜湊函數認證法）
 					if ($row['account'] != $account || !password_verify($password,$row['password'])){
 						echo ("<script>alert ('錯誤的帳號密碼'); location.href = '/PHP/week6homework_login.php';</script>");
 					} else {
 						$id_registered = $row['id_registered'];
 						$session = uniqid(mt_rand(), true);
 						$sql_session = $conn->query("INSERT INTO session(session_id,user_id) VALUES('$session','$id_registered')");
-						setcookie("session", "$session", time()+3600*24, '/; samesite = Lax');
+						setcookie("session", "$session", time()+3600*24, '/; samesite = Lax');  //設定cookie和session
 						echo ("<script>alert ('登入成功'); location.href = '/PHP/week6homework_main.php';</script>");
 					}
 				}
