@@ -14,7 +14,6 @@ class Register extends React.Component{
 	
 	handleRegister = (e) => {
 		e.preventDefault();
-		e.persist();
 		const accountLen = e.target.form[0]
 		const passwordLen = e.target.form[1]
 		const nicknameLen = e.target.form[2]

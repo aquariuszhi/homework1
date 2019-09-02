@@ -40,7 +40,7 @@ class PostChildComment extends React.Component{
 		const id_main = onePost.id_main
 		this.props.post_child(id_main, nickname, comment_child)
 	}
-	//收納安鈕
+	//收納按鈕
 	handleCollapse = (e) => {
 		e.preventDefault();
 		const {collapse} = this.state

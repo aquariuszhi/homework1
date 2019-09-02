@@ -45,12 +45,13 @@
 		
 		public function login_check(){
 			$this->load->library('session');
-			$login_check = $this->session->userdata('nickname');
-			if($login_check === null) {
+			$login_check = $this->session->userdata('account');
+			if(!$login_check) {
 				$arr = array('result' => 'error', 'nickname' => null);	
 				$this->output->set_content_type('application/json')->set_output(json_encode($arr));
 			} else {
-				$arr = array('result' => 'success', 'nickname' => $login_check);	
+				$nickname = $this->session->userdata('nickname');
+				$arr = array('result' => 'success', 'nickname' => $nickname);	
 				$this->output->set_content_type('application/json')->set_output(json_encode($arr));
 			}
 		}

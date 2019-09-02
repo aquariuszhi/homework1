@@ -116,14 +116,13 @@
 			$request_body = file_get_contents('php://input');
 			$data = json_decode($request_body);
 			$id_main = $data->id_main;
-			
-			//刪除主留言
-			$result = $this->comment_model->set_del_comment($id_main);
-			
+				
 			$cookie = get_cookie("XSRF-TOKEN", false);
 			$header = $this->input->get_request_header('X-XSRF-TOKEN', TRUE);
 			
 			if($cookie === $header){
+				//刪除主留言
+				$result = $this->comment_model->set_del_comment($id_main);
 				if($result){
 					$arr = array('result' => 'success');
 					$this->output->set_content_type('application/json')->set_output(json_encode($arr));

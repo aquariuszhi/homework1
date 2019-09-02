@@ -11,7 +11,7 @@ class Home extends React.Component{
 	
 	componentDidMount(){
 		const paramObj = this.props.match.params
-		if(Object.getOwnPropertyNames(paramObj).length === 0){
+		if(Object.getOwnPropertyNames(paramObj).length === 0){  //取得param頁碼參數，若無參數則預設頁碼為0
 			//設定預設頁碼為1
 			const page = 1
 			this.props.getPost(page)
