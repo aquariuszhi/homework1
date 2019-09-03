@@ -316,8 +316,8 @@ class FollowWriting extends React.Component{
 					)
 				})}
 				<div className = 'pagination' aria-label="...">
-					<Link to='/1' onClick = {this.handleFirstPage} className={"page-link" + (currentPageNum == 1 ? ' unclickable' : '')} page_num = '1'>首頁</Link>
-					<Link to='/pagefront' onClick = {this.handlePrevPage} className={"page-link" + (currentPageNum == 1 ? ' unclickable' : '')}>&lt;</Link>
+					<Link to='/1' onClick = {this.handleFirstPage} className={"page-link" + (currentPageNum <= 1 ? ' unclickable' : '')} page_num = '1'>首頁</Link>
+					<Link to='/pagefront' onClick = {this.handlePrevPage} className={"page-link" + (currentPageNum <= 1 ? ' unclickable' : '')}>&lt;</Link>
 					{ //根據當前頁讓頁碼鈕產生不同表現
 						currentPageNum < 3 ? '' : <Link to='/' onClick = {this.handleChangePage} className="page-link ">{currentPageNum-2}</Link>
 					}
@@ -331,8 +331,8 @@ class FollowWriting extends React.Component{
 					{
 						currentPageNum < pagination-1 ? <Link to='/' onClick = {this.handleChangePage} className="page-link ">{currentPageNum+2}</Link> : ''
 					}
-					<Link to='/' onClick = {this.handleNextPage} className={"page-link" + (currentPageNum == pagination ? ' unclickable' : '')}>&gt;</Link>
-					<Link to='/' onClick = {this.handleLastPage} className={"page-link" + (currentPageNum == pagination ? ' unclickable' : '')} page_num = {pagination}>末頁</Link>
+					<Link to='/' onClick = {this.handleNextPage} className={"page-link" + (currentPageNum == pagination || pagination <= 1 ? ' unclickable' : '')}>&gt;</Link>
+					<Link to='/' onClick = {this.handleLastPage} className={"page-link" + (currentPageNum == pagination || pagination <= 1 ? ' unclickable' : '')} page_num = {pagination}>末頁</Link>
 				</div>
 				<p className = 'copyRight'>©2019 Zhi. All Right Reserved.</p>
 			</div>
