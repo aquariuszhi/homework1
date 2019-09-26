@@ -8,8 +8,31 @@ $dropdownAndForm-color: #fde6fd;
 $writing-bg-color: #fbf4ff;
 $writing-setup-color: #f1ddfc;
 
+@keyframes dropdown{
+	from {height: 0%;}
+	to {height: 100%;}
+}
+
+@keyframes dropdown_opacity{
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+html {
+    overflow: -moz-hidden-unscrollable;
+    height: 100%;
+}
+
 body{
 	background-color: $body-color;
+	-ms-overflow-style: none;
+    height: 100%;
+	width: calc(100vw + 18px);
+	overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .navbar{
@@ -39,7 +62,7 @@ body{
 
 .navbar_div{
 	margin-left: 20px;
-	width: 100%;
+	width: 100vw;
 }
 
 .navbar-nav{
@@ -93,14 +116,21 @@ a:hover{
 	background-color: $dropdownAndForm-color;
 }
 
+.show{
+	animation: dropdown linear 0.3s;
+	-webkit-animation: dropdown linear 0.3s;
+}
+
 .dropdown-item{
 	width: 60px;
 	padding: 5px 0px 5px 15px;
+	animation: dropdown_opacity cubic-bezier(1, 0.01, 0.75, 0.72) 1s;
+	-webkit-animation: dropdown_opacity cubic-bezier(1, 0.01, 0.75, 0.72) 1s;
 }
 
 .dropdown-user{
 	min-width: 90px;
-	left: 75px;
+	left: 60px;
 	.dropdown-item:focus, .dropdown-item:hover{
 		width: 90px;
 	}
@@ -108,6 +138,12 @@ a:hover{
 
 .dropdown-item:focus, .dropdown-item:hover{
 	width: 80px;
+}
+
+.slider_div{
+	margin: 0 auto;
+	margin-top: 10px;
+	max-width: 1000px;
 }
 
 .form_open{
@@ -197,6 +233,7 @@ input:focus{
 
 #mainDiv{
 	margin: 0 auto;
+	width: fit-content;
 }
 
 .writing_input{
@@ -242,6 +279,7 @@ input:focus{
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	margin: 0px;
 }
 
 .modify_form{
@@ -259,7 +297,7 @@ input:focus{
 }
 
 .writing_form, .writing_content{
-	width: 550px;
+	width: fit-content;
 }
 
 .writing_insert, .writing{
@@ -471,6 +509,7 @@ input:focus{
 	margin-top: 10px;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 

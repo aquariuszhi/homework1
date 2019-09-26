@@ -344,7 +344,7 @@ class Mypage extends React.Component{
 			}}>
 				{
 					loginAccount === account ? '' :
-					<div>
+					<div className = 'follow_btn'>
 						{
 							followed ?
 								<button type="button" className="btn btn-danger" onClick = {this.handleFollow} text_account = {account}>♥ Followed</button>

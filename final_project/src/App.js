@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import Home from './Home'
 import Header from './Header'
+import Slider from './Slider'
 import Search from './Search'
 import Mypage from './Mypage'
 import Category from './Category'
@@ -19,7 +20,8 @@ class App extends React.Component{
 		return (
 			<Router>
 					<Header />
-					<div className = 'container'>
+					<Slider />
+					<div>
 						<Route exact path='/' component = {Home} />
 						<Route path='/home/:page' component = {Home} />
 						<Route path='/mypage/:account/:page' component = {Mypage} />
