@@ -27,8 +27,14 @@ body{
 	background-color: $body-color;
 	-ms-overflow-style: none;
     height: 100%;
-	width: calc(100vw + 18px);
+	width: 100%;
 	overflow: auto;
+}
+
+@media screen and (max-width : 1000px){
+	body{
+		width: fit-content;
+	}
 }
 
 body::-webkit-scrollbar {
@@ -62,7 +68,7 @@ body::-webkit-scrollbar {
 
 .navbar_div{
 	margin-left: 20px;
-	width: 100vw;
+	width: 100%;
 }
 
 .navbar-nav{
